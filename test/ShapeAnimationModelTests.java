@@ -71,6 +71,29 @@ public class ShapeAnimationModelTests {
         0,1,0,1,0,1,0,
         1);
   }
+
+  @Test(expected = IllegalArgumentException.class)
+  public void testStartTickSameEndValid() {
+    ShapeAnimationModel s = new ShapeAnimationModel("R", Shape.RECTANGLE);
+    s.setAnimation(0,1,0,1,0,1,0,1,
+        0,1,0,1,0,1,0,
+        1);
+    s.setAnimation(0,2,0,1,0,1,0,1,
+        0,1,0,1,0,1,0,
+        1);
+  }
+
+  @Test(expected = IllegalArgumentException.class)
+  public void testEndTickSameStartValid() {
+    ShapeAnimationModel s = new ShapeAnimationModel("R", Shape.RECTANGLE);
+    s.setAnimation(1,2,0,1,0,1,0,1,
+        0,1,0,1,0,1,0,
+        1);
+    s.setAnimation(0,2,0,1,0,1,0,1,
+        0,1,0,1,0,1,0,
+        1);
+  }
+
   @Test
   public void testToString() {
     ShapeAnimationModel s = new ShapeAnimationModel("R", Shape.RECTANGLE);

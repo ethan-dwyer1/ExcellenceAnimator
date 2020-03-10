@@ -15,7 +15,7 @@ public class ExcellenceAnimationModel implements ExcellenceAnimationOperations {
    * objects.
    */
   public ExcellenceAnimationModel() {
-    this.shapeAnimations = new ArrayList<ShapeAnimationOperations>();
+    this.shapeAnimations = new ArrayList<>();
   }
 
   @Override
