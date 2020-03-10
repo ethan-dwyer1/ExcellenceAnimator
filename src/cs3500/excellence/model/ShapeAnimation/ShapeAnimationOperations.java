@@ -15,7 +15,6 @@ public interface ShapeAnimationOperations {
   /**
    * Adds an animation to the shape.
    *
-   * @param objectId    objectId for the shape.
    * @param startTick   startTick for the animation.
    * @param endTick     endTick for the animation.
    * @param startX      startX for the animation.
@@ -35,7 +34,7 @@ public interface ShapeAnimationOperations {
    * @throws IllegalArgumentException if the animation overlaps with another animation on the
    *                                  shape.
    */
-  void setAnimation(String objectId, int startTick, int endTick, int startX, int endX, int startY,
+  void setAnimation(int startTick, int endTick, int startX, int endX, int startY,
       int endY, int startWidth, int endWidth, int startHeight, int endHeight, int startRed,
       int endRed, int startGreen, int endGreen, int startBlue, int endBlue);
 
