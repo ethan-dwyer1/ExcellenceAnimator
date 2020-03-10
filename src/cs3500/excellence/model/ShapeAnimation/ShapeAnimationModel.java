@@ -15,30 +15,38 @@ public class ShapeAnimationModel implements ShapeAnimationOperations, AnimationS
   private final Shape shape;
   private List<AnimationOperations> animationList;
 
+  /**
+   * Public constructor for a ShapeAnimationModel.  Initializes an empty list of Animations and sets
+   * the object ID and type of shape.
+   *
+   * @param objectId ID for the shape.
+   * @param shape    type of shape.
+   * @throws IllegalArgumentException if either of the inputs are null.
+   */
   public ShapeAnimationModel(String objectId, Shape shape) {
-    if(objectId == null || shape == null) {
+    if (objectId == null || shape == null) {
       throw new IllegalArgumentException("Parameters cannot be null");
     }
     this.objectId = objectId;
     this.shape = shape;
-    this.animationList = new ArrayList<AnimationOperations>();
+    this.animationList = new ArrayList<>();
   }
 
   @Override
   public Point2D getCurrentPosition() {
-    //TODO: Implement later
+    //TODO: Implement once we can get the current position from the controller.
     return null;
   }
 
   @Override
   public Dimension2D getCurrentDimensions() {
-    //TODO: Implement later
+    //TODO: Implement once we can get the current dimensions from the controller.
     return null;
   }
 
   @Override
   public Color getCurrentColor() {
-    //TODO: Implement later
+    //TODO: Implement once we can get the current color from the controller.
     return null;
   }
 
@@ -48,19 +56,23 @@ public class ShapeAnimationModel implements ShapeAnimationOperations, AnimationS
   }
 
   @Override
-  public void setAnimation(int startTick, int endTick, int startX, int endX, int startY, int endY,
+  public void setAnimation(String objectId, int startTick, int endTick, int startX, int endX,
+      int startY, int endY,
       int startWidth, int endWidth, int startHeight, int endHeight, int startRed, int endRed,
       int startGreen, int endGreen, int startBlue, int endBlue) {
-    if(startTick > endTick || startX < 0 || endX < 0 || startY < 0 || endY < 0 || startWidth < 0 ||
-        endWidth < 0 || startHeight < 0 || endHeight < 0 || !isValidColor(startRed) ||
-        !isValidColor(endRed) || !isValidColor(startGreen) || !isValidColor(endGreen) ||
-        !isValidColor(startBlue) || !isValidColor(endBlue)) {
-      throw new IllegalArgumentException("Invalid parameters");
+
+    for (AnimationOperations i : animationList) {
+      //We need to check that the animations do not overlap
+      if ((startTick > i.getStartTick() && startTick < i.getEndTick())
+          || (endTick > i.getStartTick() && endTick < i.getEndTick())) {
+        throw new IllegalArgumentException(
+            "Cannot start a new animation until the first is complete.");
+      }
     }
 
-    AnimationModel a = new AnimationModel(startTick, endTick, startX, endX, startY, endY,
-        startWidth, endWidth,
-        startHeight, endHeight, startRed, endRed, startGreen, endGreen, startBlue, endBlue);
+    AnimationModel a = new AnimationModel(objectId, startTick, endTick, startX, endX, startY, endY,
+        startWidth, endWidth, startHeight, endHeight, startRed, endRed, startGreen, endGreen,
+        startBlue, endBlue);
     animationList.add(a);
   }
 
@@ -77,8 +89,5 @@ public class ShapeAnimationModel implements ShapeAnimationOperations, AnimationS
     }
     out += "\n";
     return out;
-  }
-  private boolean isValidColor(int color) {
-    return color >= 0 && color < 256;
   }
 }

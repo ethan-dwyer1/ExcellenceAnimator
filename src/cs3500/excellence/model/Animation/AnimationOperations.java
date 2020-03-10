@@ -7,33 +7,24 @@ package cs3500.excellence.model.Animation;
 public interface AnimationOperations {
 
   /**
+   * Returns the objectId for the animation.
    *
-   * @return
+   * @return objectId string.
    */
-  String printAnimation();
+  String getObjectId();
 
   /**
+   * Returns the start tick for the animation.
    *
-   * @param startTick
-   * @param startX
-   * @param startY
-   * @param startWidth
-   * @param startHeight
-   * @param startRed
-   * @param startGreen
-   * @param startBlue
-   * @param endTick
-   * @param endX
-   * @param endY
-   * @param endWidth
-   * @param endHeight
-   * @param endRed
-   * @param endGreen
-   * @param endBlue
+   * @return startTick.
    */
-  void setAnimation(int startTick, int startX, int startY, int startWidth, int startHeight, int startRed,
-      int startGreen, int startBlue, int endTick, int endX, int endY, int endWidth, int endHeight,
-      int endRed, int endGreen, int endBlue);
+  int getStartTick();
 
+  /**
+   * Returns the end tick for the animation.
+   *
+   * @return endTick.
+   */
+  int getEndTick();
 
 }
