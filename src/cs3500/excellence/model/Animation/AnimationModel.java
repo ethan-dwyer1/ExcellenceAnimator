@@ -2,6 +2,8 @@ package cs3500.excellence.model.Animation;
 
 public class AnimationModel implements AnimationOperations {
 
+  private final String objectId;
+
   private final int startTick;
   private final int endTick;
 
@@ -22,89 +24,43 @@ public class AnimationModel implements AnimationOperations {
   private final int startBlue;
   private final int endBlue;
 
-  public int getEndTick() {
-    return endTick;
-  }
-
-  public int getStartX() {
-    return startX;
-  }
-
-  public int getEndX() {
-    return endX;
-  }
-
-  public int getStartY() {
-    return startY;
-  }
-
-  public int getEndY() {
-    return endY;
-  }
-
-  public int getStartWidth() {
-    return startWidth;
-  }
-
-  public int getEndWidth() {
-    return endWidth;
-  }
-
-  public int getStartHeight() {
-    return startHeight;
-  }
-
-  public int getEndHeight() {
-    return endHeight;
-  }
-
-  public int getStartRed() {
-    return startRed;
-  }
-
-  public int getEndRed() {
-    return endRed;
-  }
-
-  public int getStartGreen() {
-    return startGreen;
-  }
-
-  public int getEndGreen() {
-    return endGreen;
-  }
-
-  public int getStartBlue() {
-    return startBlue;
-  }
-
-  public int getEndBlue() {
-    return endBlue;
-  }
-
   /**
+   * Public constructor for an AnimationModel. Sets the parameters for the given animation.
    *
-   * @param startTick
-   * @param endTick
-   * @param startX
-   * @param endX
-   * @param startY
-   * @param endY
-   * @param startWidth
-   * @param endWidth
-   * @param startHeight
-   * @param endHeight
-   * @param startRed
-   * @param endRed
-   * @param startGreen
-   * @param endGreen
-   * @param startBlue
-   * @param endBlue
+   * @param startTick   Start time of the animation.
+   * @param endTick     End time of the animation.
+   * @param startX      Starting X position of the shape in the animation.
+   * @param endX        Final X position of the shape in the animation.
+   * @param startY      Starting Y position of the shape in the animation.
+   * @param endY        Final Y position of the shape in the animation.
+   * @param startWidth  Starting width of the shape in the animation.
+   * @param endWidth    Final width of the shape in the animation.
+   * @param startHeight Starting height of the shape in the animation.
+   * @param endHeight   Final height of the shape in the animation.
+   * @param startRed    Starting red color of the shape in the animation.
+   * @param endRed      Final red color of the shape in the animation.
+   * @param startGreen  Starting green color of the shape in the animation.
+   * @param endGreen    Final green color of the shape in the animation.
+   * @param startBlue   Starting blue color of the shape in the animation.
+   * @param endBlue     Final blue color of the shape in the animation.
+   * @throws IllegalArgumentException if the startTick is greater than the end tick or if any of the
+   *                                  dimension parameters are less than 0 or if any of the color
+   *                                  parameters are not valid meaning they are between 0 and 255
+   *                                  inclusive.
    */
-  public AnimationModel(int startTick, int endTick, int startX, int endX, int startY,
+  public AnimationModel(String objectId, int startTick, int endTick, int startX, int endX,
+      int startY,
       int endY, int startWidth, int endWidth, int startHeight, int endHeight, int startRed,
       int endRed, int startGreen, int endGreen, int startBlue, int endBlue) {
 
+    if (startTick > endTick || startX < 0 || endX < 0 || startY < 0 || endY < 0 || startWidth < 0 ||
+        endWidth < 0 || startHeight < 0 || endHeight < 0 || !isValidColor(startRed) ||
+        !isValidColor(endRed) || !isValidColor(startGreen) || !isValidColor(endGreen) ||
+        !isValidColor(startBlue) || !isValidColor(endBlue)) {
+      throw new IllegalArgumentException("Invalid parameters");
+    }
+
+    this.objectId = objectId;
     this.startTick = startTick;
     this.endTick = endTick;
     this.startX = startX;
@@ -124,19 +80,30 @@ public class AnimationModel implements AnimationOperations {
   }
 
   @Override
-  public String printAnimation() {
-    String animation = "";
-    return  startTick + " " + startX + " " + startY
-        + " " + startWidth + " " + startHeight + " " + startRed + " " + startGreen + " "
-        + startBlue + "   " +  endTick + " " + endX + " " + endY + " " + endWidth + " "
-        + endHeight + " " + endRed + " " + endGreen + " " + endBlue + "\n";
+  public String getObjectId() {
+    return objectId;
   }
 
   @Override
-  public void setAnimation(int startTick, int startX, int startY, int startWidth, int startHeight,
-      int startRed, int startGreen, int startBlue, int endTick, int endX, int endY, int endWidth,
-      int endHeight, int endRed, int endGreen, int endBlue) {
-    //get shape with objectID from ShapeAnimation and add this animation to the list
+  public int getStartTick() {
+    return startTick;
+  }
+
+  @Override
+  public int getEndTick() {
+    return endTick;
+  }
+
+  @Override
+  public String toString() {
+    return startTick + " " + startX + " " + startY
+        + " " + startWidth + " " + startHeight + " " + startRed + " " + startGreen + " "
+        + startBlue + "   " + endTick + " " + endX + " " + endY + " " + endWidth + " "
+        + endHeight + " " + endRed + " " + endGreen + " " + endBlue + "\n";
+  }
+
+  private boolean isValidColor(int color) {
+    return color >= 0 && color < 256;
   }
 
 }

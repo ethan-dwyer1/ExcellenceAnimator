@@ -1,12 +1,12 @@
 package cs3500.excellence.model.ShapeAnimation;
 
 public enum Shape {
-  RECTANGLE{
+  RECTANGLE {
     @Override
     public String toString() {
       return "Rectangle";
     }
-  }, OVAL{
+  }, OVAL {
     @Override
     public String toString() {
       return "Oval";
