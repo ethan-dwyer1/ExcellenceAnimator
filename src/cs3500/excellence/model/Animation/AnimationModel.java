@@ -102,6 +102,26 @@ public class AnimationModel implements AnimationOperations {
         + endHeight + " " + endRed + " " + endGreen + " " + endBlue + "\n";
   }
 
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj) {
+      return true;
+    }
+
+    if (!(obj instanceof AnimationModel)) {
+      return false;
+    }
+
+    AnimationModel a = (AnimationModel) obj;
+
+    return a.objectId.equals(objectId) && a.startTick == startTick && a.startX == startX
+        && a.startY == startY && a.startWidth == startWidth && a.startHeight == startHeight
+        && a.startRed == startRed && a.startGreen == startGreen && a.startBlue == startBlue
+        && a.endTick == endTick && a.endX == endX
+        && a.endY == endY && a.endWidth == endWidth && a.endHeight == endHeight
+        && a.endRed == endRed && a.endGreen == endGreen && a.endBlue == endBlue;
+  }
+
   private boolean isValidColor(int color) {
     return color >= 0 && color < 256;
   }

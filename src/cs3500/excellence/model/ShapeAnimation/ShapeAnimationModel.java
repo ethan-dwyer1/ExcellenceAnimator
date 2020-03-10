@@ -56,7 +56,7 @@ public class ShapeAnimationModel implements ShapeAnimationOperations, AnimationS
   }
 
   @Override
-  public void setAnimation(String objectId, int startTick, int endTick, int startX, int endX,
+  public void setAnimation(int startTick, int endTick, int startX, int endX,
       int startY, int endY,
       int startWidth, int endWidth, int startHeight, int endHeight, int startRed, int endRed,
       int startGreen, int endGreen, int startBlue, int endBlue) {
@@ -64,7 +64,8 @@ public class ShapeAnimationModel implements ShapeAnimationOperations, AnimationS
     for (AnimationOperations i : animationList) {
       //We need to check that the animations do not overlap
       if ((startTick > i.getStartTick() && startTick < i.getEndTick())
-          || (endTick > i.getStartTick() && endTick < i.getEndTick())) {
+          || (endTick > i.getStartTick() && endTick < i.getEndTick())
+          || (endTick == i.getEndTick() && startTick == i.getStartTick())) {
         throw new IllegalArgumentException(
             "Cannot start a new animation until the first is complete.");
       }
@@ -85,7 +86,7 @@ public class ShapeAnimationModel implements ShapeAnimationOperations, AnimationS
   public String toString() {
     String out = "Shape " + objectId + " " + shape.toString() + "\n";
     for (AnimationOperations i : animationList) {
-      out += "motion " + objectId + i.toString();
+      out += "motion " + objectId + " " + i.toString();
     }
     out += "\n";
     return out;
