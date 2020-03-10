@@ -63,8 +63,8 @@ public class ShapeAnimationModel implements ShapeAnimationOperations, AnimationS
 
     for (AnimationOperations i : animationList) {
       //We need to check that the animations do not overlap
-      if ((startTick > i.getStartTick() && startTick < i.getEndTick())
-          || (endTick > i.getStartTick() && endTick < i.getEndTick())
+      if ((startTick >= i.getStartTick() && startTick < i.getEndTick())
+          || (endTick > i.getStartTick() && endTick <= i.getEndTick())
           || (endTick == i.getEndTick() && startTick == i.getStartTick())) {
         throw new IllegalArgumentException(
             "Cannot start a new animation until the first is complete.");
