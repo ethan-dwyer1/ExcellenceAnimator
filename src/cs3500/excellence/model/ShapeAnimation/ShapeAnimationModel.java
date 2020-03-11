@@ -96,6 +96,14 @@ public class ShapeAnimationModel implements ShapeAnimationOperations {
   }
 
   @Override
+  public void moveAtCurrentTick(int currentTick) {
+    for(AnimationOperations a: animationList) {
+      int stepAmt = a.getEndTick() - a.getStartTick();
+
+    }
+  }
+
+  @Override
   public String toString() {
     String out = "Shape " + objectId + " " + shape.toString() + "\n";
     for (AnimationOperations i : animationList) {

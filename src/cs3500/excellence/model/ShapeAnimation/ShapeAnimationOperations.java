@@ -46,4 +46,10 @@ public interface ShapeAnimationOperations extends AnimationState {
    */
   String getObjectId();
 
+  /**
+   *
+   * @param currentTick
+   */
+  void moveAtCurrentTick(int currentTick);
+
 }
