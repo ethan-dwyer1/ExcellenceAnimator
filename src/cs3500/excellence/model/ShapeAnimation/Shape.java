@@ -1,4 +1,4 @@
-package cs3500.excellence.model.ShapeAnimation;
+package cs3500.excellence.model.ShapeAnimation
 import java.awt.Color;
 import java.awt.Point;
 import java.awt.geom.Point2D;
