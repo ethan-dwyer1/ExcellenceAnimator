@@ -138,7 +138,7 @@ public class ShapeAnimationModel implements ShapeAnimationOperations {
       }
     }
 
-    return this.objectId.equals(s.objectId) && this.shape == s.shape;
+    return this.objectId.equals(s.objectId) && this.shape.equals(s.shape);
   }
 
   @Override

@@ -1,4 +1,5 @@
 package cs3500.excellence.model.ShapeAnimation;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Point;
@@ -9,7 +10,8 @@ import java.awt.geom.Point2D;
  * An enumeration to represent different expected shapes in the ShapeAnimationModel class.
  */
 public class Shape {
-  private enum shapeType {
+
+  public enum shapeType {
     RECTANGLE {
       @Override
       public String toString() {
@@ -54,10 +56,37 @@ public class Shape {
   }
 
   public void setDimensions(int width, int height) {
-    this.dimensions = new Dimension((int)dimensions.getWidth() + width, (int)dimensions.getHeight() + height);
+    this.dimensions = new Dimension((int) dimensions.getWidth() + width,
+        (int) dimensions.getHeight() + height);
   }
 
   public void setPosition(int x, int y) {
-    this.position = new Point((int)position.getX() + x, (int)position.getY() + y);
+    this.position = new Point((int) position.getX() + x, (int) position.getY() + y);
+  }
+
+  @Override
+  public int hashCode() {
+    return super.hashCode();
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj) {
+      return true;
+    }
+
+    if (!(obj instanceof Shape)) {
+      return false;
+    }
+
+    Shape s = (Shape) obj;
+
+    return s.type == this.type && s.color.equals(this.color) && this.position.equals(s.position)
+        && this.dimensions.equals(s.dimensions);
+  }
+
+  @Override
+  public String toString() {
+    return type.toString();
   }
 }
