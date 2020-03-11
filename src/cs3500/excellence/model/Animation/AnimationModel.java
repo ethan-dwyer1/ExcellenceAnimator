@@ -1,5 +1,8 @@
 package cs3500.excellence.model.Animation;
 
+/**
+ * A model to represent a simple animation of any object in terms or position, size, and color.
+ */
 public class AnimationModel implements AnimationOperations {
 
   private final String objectId;

@@ -8,6 +8,9 @@ import java.awt.geom.Point2D;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * A model to represent the animations applied to a single shape over a period of ticks.
+ */
 public class ShapeAnimationModel implements ShapeAnimationOperations {
 
   private final String objectId;

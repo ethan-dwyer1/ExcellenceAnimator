@@ -4,7 +4,11 @@ import cs3500.excellence.model.ShapeAnimation.ShapeAnimationModel;
 import cs3500.excellence.model.ShapeAnimation.ShapeAnimationOperations;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
+/**
+ * A model to represent complex animations consisting of multiple animated shapes.
+ */
 public class ExcellenceAnimationModel implements ExcellenceAnimationOperations {
 
   private final List<ShapeAnimationOperations> shapeAnimations;
@@ -75,4 +79,5 @@ public class ExcellenceAnimationModel implements ExcellenceAnimationOperations {
 
     return true;
   }
+
 }
