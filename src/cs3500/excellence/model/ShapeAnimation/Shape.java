@@ -1,6 +1,8 @@
 package cs3500.excellence.model.ShapeAnimation;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Point;
+import java.awt.geom.Dimension2D;
 import java.awt.geom.Point2D;
 
 /**
@@ -23,31 +25,39 @@ public class Shape {
 
   private shapeType type;
   private Color color;
-  private int width;
-  private int height;
+  private Dimension2D dimensions;
   private Point2D position;
 
   public Shape(int red, int green, int blue, int width, int height, int x, int y, shapeType type) {
     this.color = new Color(red, green, blue);
-    this.width = width;
-    this.height = height;
+    this.dimensions = new Dimension(width, height);
     this.position = new Point(x, y);
     this.type = type;
   }
 
+  public Color getColor() {
+    return color;
+  }
+
+  public Dimension2D getDimensions() {
+    return dimensions;
+  }
+
+  public Point2D getPosition() {
+    return position;
+  }
+
   public void setColor(int red, int green, int blue) {
-    this.color = new Color(red, green, blue);
+    this.color = new Color(color.getRed() + red, color.getGreen() + green,
+        color.getBlue() + blue);
+
   }
 
-  public void setWidth(int width) {
-    this.width = width;
+  public void setDimensions(int width, int height) {
+    this.dimensions = new Dimension((int)dimensions.getWidth() + width, (int)dimensions.getHeight() + height);
   }
 
-  public void setHeight(int height) {
-    this.height = height;
-  }
-
-  public void setPosition(Point2D position) {
-    this.position = position;
+  public void setPosition(int x, int y) {
+    this.position = new Point((int)position.getX() + x, (int)position.getY() + y);
   }
 }

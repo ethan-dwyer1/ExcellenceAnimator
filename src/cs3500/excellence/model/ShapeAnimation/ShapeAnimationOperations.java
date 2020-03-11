@@ -1,5 +1,6 @@
 package cs3500.excellence.model.ShapeAnimation;
 
+import cs3500.excellence.model.Animation.AnimationModel;
 import cs3500.excellence.model.Animation.AnimationOperations;
 import cs3500.excellence.model.AnimationState;
 import java.util.List;

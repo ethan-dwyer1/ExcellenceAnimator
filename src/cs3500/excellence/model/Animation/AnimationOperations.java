@@ -26,4 +26,46 @@ public interface AnimationOperations {
    * @return endTick.
    */
   int getEndTick();
+
+  /**
+   *
+   * @return
+   */
+  int getHeightChange();
+
+  /**
+   *
+   * @return
+   */
+  int getWidthChange();
+
+  /**
+   *
+   * @return
+   */
+  int getXChange();
+
+  /**
+   *
+   * @return
+   */
+  int getYChange();
+
+  /**
+   *
+   * @return
+   */
+  int getRedChange();
+
+  /**
+   *
+   * @return
+   */
+  int getGreenChange();
+
+  /**
+   *
+   * @return
+   */
+  int getBlueChange();
 }

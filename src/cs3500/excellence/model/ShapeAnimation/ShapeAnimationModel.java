@@ -3,6 +3,7 @@ package cs3500.excellence.model.ShapeAnimation;
 import cs3500.excellence.model.Animation.AnimationModel;
 import cs3500.excellence.model.Animation.AnimationOperations;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.geom.Dimension2D;
 import java.awt.geom.Point2D;
 import java.util.ArrayList;
@@ -49,20 +50,17 @@ public class ShapeAnimationModel implements ShapeAnimationOperations {
 
   @Override
   public Point2D getCurrentPosition() {
-    //TODO: Implement once we can get the current position from the controller.
-    return null;
+    return shape.getPosition();
   }
 
   @Override
   public Dimension2D getCurrentDimensions() {
-    //TODO: Implement once we can get the current dimensions from the controller.
-    return null;
+    return shape.getDimensions();
   }
 
   @Override
   public Color getCurrentColor() {
-    //TODO: Implement once we can get the current color from the controller.
-    return null;
+    return shape.getColor();
   }
 
   @Override
@@ -100,7 +98,11 @@ public class ShapeAnimationModel implements ShapeAnimationOperations {
   @Override
   public void moveAtCurrentTick(int currentTick) {
     for(AnimationOperations a: animationList) {
-      int stepAmt = a.getEndTick() - a.getStartTick();
+      if(currentTick > a.getStartTick() && currentTick <= a.getEndTick()) {
+        shape.setDimensions(a.getWidthChange(), a.getHeightChange());
+        shape.setPosition(a.getXChange(), a.getYChange());
+        shape.setColor(a.getRedChange(), a.getGreenChange(), a.getBlueChange());
+      }
 
     }
   }
