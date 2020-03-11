@@ -6,7 +6,9 @@ import java.awt.Color;
 import java.awt.geom.Dimension2D;
 import java.awt.geom.Point2D;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * A model to represent the animations applied to a single shape over a period of ticks.
@@ -139,4 +141,17 @@ public class ShapeAnimationModel implements ShapeAnimationOperations {
     return this.objectId.equals(s.objectId) && this.shape == s.shape;
   }
 
+  @Override
+  public int hashCode() {
+    ArrayList<String> values = new ArrayList<>();
+    for (int i = 0; i < animationList.size(); i++) {
+      values.add(animationList.get(i).toString());
+    }
+    Collections.sort(values);
+    String hashable = "";
+    for (String i : values) {
+      hashable += i;
+    }
+    return Objects.hash(objectId, shape, hashable);
+  }
 }
