@@ -1,6 +1,5 @@
 package cs3500.excellence.model.ShapeAnimation;
 
-import cs3500.excellence.model.Animation.AnimationModel;
 import cs3500.excellence.model.Animation.AnimationOperations;
 import cs3500.excellence.model.AnimationState;
 import java.util.List;
@@ -48,8 +47,10 @@ public interface ShapeAnimationOperations extends AnimationState {
   String getObjectId();
 
   /**
+   * Moves the shape at the current state of the clock. If the shape has an animation in the given
+   * tick it will perform the transformation otherwise it will not do anything.
    *
-   * @param currentTick
+   * @param currentTick the current tick of the clock.
    */
   void moveAtCurrentTick(int currentTick);
 

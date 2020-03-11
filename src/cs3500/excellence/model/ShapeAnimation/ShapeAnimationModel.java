@@ -3,7 +3,6 @@ package cs3500.excellence.model.ShapeAnimation;
 import cs3500.excellence.model.Animation.AnimationModel;
 import cs3500.excellence.model.Animation.AnimationOperations;
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.geom.Dimension2D;
 import java.awt.geom.Point2D;
 import java.util.ArrayList;
@@ -95,8 +94,8 @@ public class ShapeAnimationModel implements ShapeAnimationOperations {
 
   @Override
   public void moveAtCurrentTick(int currentTick) {
-    for(AnimationOperations a: animationList) {
-      if(currentTick > a.getStartTick() && currentTick <= a.getEndTick()) {
+    for (AnimationOperations a : animationList) {
+      if (currentTick > a.getStartTick() && currentTick <= a.getEndTick()) {
         shape.setDimensions(a.getWidthChange(), a.getHeightChange());
         shape.setPosition(a.getXChange(), a.getYChange());
         shape.setColor(a.getRedChange(), a.getGreenChange(), a.getBlueChange());
