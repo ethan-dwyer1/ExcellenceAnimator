@@ -28,4 +28,12 @@ public interface ExcellenceAnimationOperations {
    * @throws IllegalArgumentException if a shape with the given objectId does not exist.
    */
   ShapeAnimationOperations getShapeWithObjectId(String objectId);
+
+  /**
+   * Updates the ShapeAnimationOperations given the current tick
+   *
+   * @param tick the current tick of the animation
+   */
+
+  void animationAtCurrentTick(int tick);
 }
