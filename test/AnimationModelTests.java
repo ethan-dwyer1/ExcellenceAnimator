@@ -9,11 +9,11 @@ public class AnimationModelTests {
 
   @Test
   public void testToString() {
-    AnimationModel a = new AnimationModel("R", 0, 5, 0, 5,
+    AnimationModel a = new AnimationModel("R", 1, 5, 0, 5,
         0, 5, 0, 5, 0, 5, 0,
         5, 0, 5, 0, 5);
 
-    String match = "0 0 0 0 0 0 0 0   5 5 5 5 5 5 5 5\n";
+    String match = "1 0 0 0 0 0 0 0   5 5 5 5 5 5 5 5\n";
 
     assertEquals(match, a.toString());
   }
@@ -37,34 +37,6 @@ public class AnimationModelTests {
   public void testStartTickGreaterThanEndTick() {
     AnimationModel a = new AnimationModel("R", 5, 0, 0, 5,
         0, 5, 0, 5, 0, 5, 0,
-        5, 0, 5, 0, 5);
-  }
-
-  @Test(expected = IllegalArgumentException.class)
-  public void testNegativeStartX() {
-    AnimationModel a = new AnimationModel("R", 0, 5, -1, 5,
-        0, 5, 0, 5, 0, 5, 0,
-        5, 0, 5, 0, 5);
-  }
-
-  @Test(expected = IllegalArgumentException.class)
-  public void testNegativeEndX() {
-    AnimationModel a = new AnimationModel("R", 0, 5, 0, -1,
-        0, 5, 0, 5, 0, 5, 0,
-        5, 0, 5, 0, 5);
-  }
-
-  @Test(expected = IllegalArgumentException.class)
-  public void testNegativeStartY() {
-    AnimationModel a = new AnimationModel("R", 0, 5, 0, 5,
-        -1, 5, 0, 5, 0, 5, 0,
-        5, 0, 5, 0, 5);
-  }
-
-  @Test(expected = IllegalArgumentException.class)
-  public void testNegativeEndY() {
-    AnimationModel a = new AnimationModel("R", 0, 5, 0, 5,
-        0, -1, 0, 5, 0, 5, 0,
         5, 0, 5, 0, 5);
   }
 
@@ -140,7 +112,7 @@ public class AnimationModelTests {
 
   @Test
   public void testGetObjectId() {
-    AnimationModel a = new AnimationModel("R", 0, 5, 0, 5,
+    AnimationModel a = new AnimationModel("R", 1, 5, 0, 5,
         0, 5, 0, 5, 0, 5, 0,
         5, 0, 5, 0, 5);
 
@@ -149,16 +121,16 @@ public class AnimationModelTests {
 
   @Test
   public void testGetStartTick() {
-    AnimationModel a = new AnimationModel("R", 0, 5, 0, 5,
+    AnimationModel a = new AnimationModel("R", 1, 5, 0, 5,
         0, 5, 0, 5, 0, 5, 0,
         5, 0, 5, 0, 5);
 
-    assertEquals(0, a.getStartTick());
+    assertEquals(1, a.getStartTick());
   }
 
   @Test
   public void testGetEndTick() {
-    AnimationModel a = new AnimationModel("R", 0, 5, 0, 5,
+    AnimationModel a = new AnimationModel("R", 1, 5, 0, 5,
         0, 5, 0, 5, 0, 5, 0,
         5, 0, 5, 0, 5);
 
@@ -167,11 +139,11 @@ public class AnimationModelTests {
 
   @Test
   public void testEquals() {
-    AnimationModel a = new AnimationModel("R", 0, 5, 0, 5,
+    AnimationModel a = new AnimationModel("R", 1, 5, 0, 5,
         0, 5, 0, 5, 0, 5, 0,
         5, 0, 5, 0, 5);
 
-    AnimationModel a1 = new AnimationModel("R", 0, 5, 0, 5,
+    AnimationModel a1 = new AnimationModel("R", 1, 5, 0, 5,
         0, 5, 0, 5, 0, 5, 0,
         5, 0, 5, 0, 5);
 
@@ -180,11 +152,11 @@ public class AnimationModelTests {
 
   @Test
   public void testDoesNotEqual() {
-    AnimationModel a = new AnimationModel("R", 0, 5, 0, 5,
+    AnimationModel a = new AnimationModel("R", 1, 5, 0, 5,
         0, 5, 0, 5, 0, 5, 0,
         5, 0, 5, 0, 5);
 
-    AnimationModel a1 = new AnimationModel("G", 0, 5, 0, 5,
+    AnimationModel a1 = new AnimationModel("G", 1, 5, 0, 5,
         0, 5, 0, 5, 0, 5, 0,
         5, 0, 5, 0, 5);
 

@@ -26,5 +26,4 @@ public interface AnimationOperations {
    * @return endTick.
    */
   int getEndTick();
-
 }

@@ -45,7 +45,7 @@ public class ShapeAnimationModelTests {
   public void testValidTicks() {
     try {
       ShapeAnimationModel s = new ShapeAnimationModel("R", Shape.RECTANGLE);
-      s.addAnimation(0, 10, 0, 1, 0, 1, 0, 1,
+      s.addAnimation(1, 10, 0, 1, 0, 1, 0, 1,
           0, 1, 0, 1, 0, 1, 0,
           1);
       s.addAnimation(10, 15, 0, 1, 0, 1, 0, 1,
@@ -114,42 +114,43 @@ public class ShapeAnimationModelTests {
   @Test
   public void testToString() {
     ShapeAnimationModel s = new ShapeAnimationModel("R", Shape.RECTANGLE);
-    s.addAnimation(0, 1, 0, 1, 0, 1, 0, 1,
-        0, 1, 0, 1, 0, 1, 0,
-        1);
     s.addAnimation(1, 2, 0, 1, 0, 1, 0, 1,
         0, 1, 0, 1, 0, 1, 0,
         1);
     s.addAnimation(2, 3, 0, 1, 0, 1, 0, 1,
         0, 1, 0, 1, 0, 1, 0,
         1);
+    s.addAnimation(3, 4, 0, 1, 0, 1, 0, 1,
+        0, 1, 0, 1, 0, 1, 0,
+        1);
     assertEquals("Shape R Rectangle\n"
-        + "motion R 0 0 0 0 0 0 0 0   1 1 1 1 1 1 1 1\n"
         + "motion R 1 0 0 0 0 0 0 0   2 1 1 1 1 1 1 1\n"
-        + "motion R 2 0 0 0 0 0 0 0   3 1 1 1 1 1 1 1\n\n", s.toString());
+        + "motion R 2 0 0 0 0 0 0 0   3 1 1 1 1 1 1 1\n"
+        + "motion R 3 0 0 0 0 0 0 0   4 1 1 1 1 1 1 1\n"
+        + "\n", s.toString());
   }
 
   @Test
   public void testGetAnimations() {
     ShapeAnimationModel s = new ShapeAnimationModel("R", Shape.RECTANGLE);
-    s.addAnimation(0, 1, 0, 1, 0, 1, 0, 1,
-        0, 1, 0, 1, 0, 1, 0,
-        1);
     s.addAnimation(1, 2, 0, 1, 0, 1, 0, 1,
         0, 1, 0, 1, 0, 1, 0,
         1);
     s.addAnimation(2, 3, 0, 1, 0, 1, 0, 1,
         0, 1, 0, 1, 0, 1, 0,
         1);
+    s.addAnimation(3, 4, 0, 1, 0, 1, 0, 1,
+        0, 1, 0, 1, 0, 1, 0,
+        1);
 
     List<AnimationOperations> sList = new ArrayList<>();
-    sList.add(new AnimationModel("R", 0, 1, 0, 1, 0, 1, 0, 1,
-        0, 1, 0, 1, 0, 1, 0,
-        1));
     sList.add(new AnimationModel("R", 1, 2, 0, 1, 0, 1, 0, 1,
         0, 1, 0, 1, 0, 1, 0,
         1));
     sList.add(new AnimationModel("R", 2, 3, 0, 1, 0, 1, 0, 1,
+        0, 1, 0, 1, 0, 1, 0,
+        1));
+    sList.add(new AnimationModel("R", 3, 4, 0, 1, 0, 1, 0, 1,
         0, 1, 0, 1, 0, 1, 0,
         1));
 
@@ -165,24 +166,24 @@ public class ShapeAnimationModelTests {
   @Test
   public void testEquals() {
     ShapeAnimationModel s = new ShapeAnimationModel("R", Shape.RECTANGLE);
-    s.addAnimation(0, 1, 0, 1, 0, 1, 0, 1,
-        0, 1, 0, 1, 0, 1, 0,
-        1);
     s.addAnimation(1, 2, 0, 1, 0, 1, 0, 1,
         0, 1, 0, 1, 0, 1, 0,
         1);
     s.addAnimation(2, 3, 0, 1, 0, 1, 0, 1,
         0, 1, 0, 1, 0, 1, 0,
         1);
-
-    ShapeAnimationModel s1 = new ShapeAnimationModel("R", Shape.RECTANGLE);
-    s1.addAnimation(0, 1, 0, 1, 0, 1, 0, 1,
+    s.addAnimation(3, 4, 0, 1, 0, 1, 0, 1,
         0, 1, 0, 1, 0, 1, 0,
         1);
+
+    ShapeAnimationModel s1 = new ShapeAnimationModel("R", Shape.RECTANGLE);
     s1.addAnimation(1, 2, 0, 1, 0, 1, 0, 1,
         0, 1, 0, 1, 0, 1, 0,
         1);
     s1.addAnimation(2, 3, 0, 1, 0, 1, 0, 1,
+        0, 1, 0, 1, 0, 1, 0,
+        1);
+    s1.addAnimation(3, 4, 0, 1, 0, 1, 0, 1,
         0, 1, 0, 1, 0, 1, 0,
         1);
 
@@ -192,24 +193,24 @@ public class ShapeAnimationModelTests {
   @Test
   public void testDoesNotEqual() {
     ShapeAnimationModel s = new ShapeAnimationModel("R", Shape.RECTANGLE);
-    s.addAnimation(0, 1, 0, 1, 0, 1, 0, 1,
-        0, 1, 0, 1, 0, 1, 0,
-        1);
     s.addAnimation(1, 2, 0, 1, 0, 1, 0, 1,
         0, 1, 0, 1, 0, 1, 0,
         1);
     s.addAnimation(2, 3, 0, 1, 0, 1, 0, 1,
         0, 1, 0, 1, 0, 1, 0,
         1);
-
-    ShapeAnimationModel s1 = new ShapeAnimationModel("R", Shape.RECTANGLE);
-    s1.addAnimation(0, 1, 0, 1, 1, 1, 0, 1,
+    s.addAnimation(3, 4, 0, 1, 0, 1, 0, 1,
         0, 1, 0, 1, 0, 1, 0,
         1);
-    s1.addAnimation(1, 2, 0, 1, 0, 1, 0, 1,
+
+    ShapeAnimationModel s1 = new ShapeAnimationModel("R", Shape.RECTANGLE);
+    s1.addAnimation(1, 2, 0, 1, 1, 1, 0, 1,
         0, 1, 0, 1, 0, 1, 0,
         1);
     s1.addAnimation(2, 3, 0, 1, 0, 1, 0, 1,
+        0, 1, 0, 1, 0, 1, 0,
+        1);
+    s1.addAnimation(3, 4, 0, 1, 0, 1, 0, 1,
         0, 1, 0, 1, 0, 1, 0,
         1);
 
