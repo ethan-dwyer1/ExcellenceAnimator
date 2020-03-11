@@ -1,5 +1,7 @@
 package cs3500.excellence.model.Animation;
 
+import java.util.Objects;
+
 /**
  * A model to represent a simple animation of any object in terms or position, size, and color.
  */
@@ -126,6 +128,11 @@ public class AnimationModel implements AnimationOperations {
         && a.endTick == endTick && a.endX == endX
         && a.endY == endY && a.endWidth == endWidth && a.endHeight == endHeight
         && a.endRed == endRed && a.endGreen == endGreen && a.endBlue == endBlue;
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(this.toString());
   }
 
   private boolean isValidColor(int color) {

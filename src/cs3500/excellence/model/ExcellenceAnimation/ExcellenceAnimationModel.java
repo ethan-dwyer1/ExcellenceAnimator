@@ -2,7 +2,9 @@ package cs3500.excellence.model.ExcellenceAnimation;
 
 import cs3500.excellence.model.ShapeAnimation.ShapeAnimationModel;
 import cs3500.excellence.model.ShapeAnimation.ShapeAnimationOperations;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
@@ -78,6 +80,20 @@ public class ExcellenceAnimationModel implements ExcellenceAnimationOperations {
     }
 
     return true;
+  }
+
+  @Override
+  public int hashCode() {
+    ArrayList<String> values = new ArrayList<>();
+    for (int i = 0; i < shapeAnimations.size(); i++) {
+      values.add(shapeAnimations.get(i).toString());
+    }
+    Collections.sort(values);
+    String hashable = "";
+    for (String i : values) {
+      hashable += i;
+    }
+    return Objects.hash(hashable);
   }
 
   @Override
