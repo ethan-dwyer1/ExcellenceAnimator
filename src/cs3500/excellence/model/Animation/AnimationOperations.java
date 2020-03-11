@@ -75,4 +75,39 @@ public interface AnimationOperations {
    * @return change in blue per clock tick.
    */
   int getBlueChange();
+
+  /**
+   * @return
+   */
+  int getRed();
+
+  /**
+   * @return
+   */
+  int getBlue();
+
+  /**
+   * @return
+   */
+  int getGreen();
+
+  /**
+   * @return
+   */
+  int getX();
+
+  /**
+   * @return
+   */
+  int getY();
+
+  /**
+   * @return
+   */
+  int getWidth();
+
+  /**
+   * @return
+   */
+  int getHeight();
 }

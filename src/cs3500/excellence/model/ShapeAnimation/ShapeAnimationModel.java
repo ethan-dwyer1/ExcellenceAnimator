@@ -2,6 +2,7 @@ package cs3500.excellence.model.ShapeAnimation;
 
 import cs3500.excellence.model.Animation.AnimationModel;
 import cs3500.excellence.model.Animation.AnimationOperations;
+import cs3500.excellence.model.ShapeAnimation.Shape.shapeType;
 import java.awt.Color;
 import java.awt.geom.Dimension2D;
 import java.awt.geom.Point2D;
@@ -24,15 +25,22 @@ public class ShapeAnimationModel implements ShapeAnimationOperations {
    * the object ID and type of shape.
    *
    * @param objectId ID for the shape.
-   * @param shape    type of shape.
+   * @param type     type of shape.
    * @throws IllegalArgumentException if either of the inputs are null.
    */
-  public ShapeAnimationModel(String objectId, Shape shape) {
-    if (objectId == null || shape == null) {
+  public ShapeAnimationModel(String objectId, shapeType type) {
+    if (objectId == null || type == null) {
       throw new IllegalArgumentException("Parameters cannot be null");
     }
     this.objectId = objectId;
-    this.shape = shape;
+    AnimationOperations a = getFirstAnimation();
+    if (a != null) {
+      this.shape = new Shape(a.getRed(), a.getGreen(), a.getBlue(), a.getWidth(),
+          a.getHeight(), a.getX(), a.getY(), type);
+    } else {
+      this.shape = null;
+    }
+
     this.animationList = new ArrayList<>();
   }
 
@@ -153,5 +161,9 @@ public class ShapeAnimationModel implements ShapeAnimationOperations {
       hashable += i;
     }
     return Objects.hash(objectId, shape, hashable);
+  }
+
+  private AnimationOperations getFirstAnimation() {
+    return null;
   }
 }

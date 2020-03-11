@@ -3,7 +3,7 @@ import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
 
 import cs3500.excellence.model.ExcellenceAnimation.ExcellenceAnimationModel;
-import cs3500.excellence.model.ShapeAnimation.Shape;
+import cs3500.excellence.model.ShapeAnimation.Shape.shapeType;
 import cs3500.excellence.model.ShapeAnimation.ShapeAnimationModel;
 import cs3500.excellence.model.ShapeAnimation.ShapeAnimationOperations;
 import org.junit.Test;
@@ -14,8 +14,8 @@ public class ExcellenceAnimationModelTests {
   @Test(expected = IllegalArgumentException.class)
   public void testSetShapeAnimationObjectIdExists() {
     ExcellenceAnimationModel e = new ExcellenceAnimationModel();
-    ShapeAnimationModel s1 = new ShapeAnimationModel("R", Shape.RECTANGLE);
-    ShapeAnimationModel s2 = new ShapeAnimationModel("R", Shape.OVAL);
+    ShapeAnimationModel s1 = new ShapeAnimationModel("R", shapeType.RECTANGLE);
+    ShapeAnimationModel s2 = new ShapeAnimationModel("R", shapeType.OVAL);
     e.addShapeAnimation(s1);
     e.addShapeAnimation(s2);
   }
@@ -23,7 +23,7 @@ public class ExcellenceAnimationModelTests {
   @Test
   public void testSetGetShapeAnimation() {
     ExcellenceAnimationModel e = new ExcellenceAnimationModel();
-    ShapeAnimationModel s1 = new ShapeAnimationModel("R", Shape.RECTANGLE);
+    ShapeAnimationModel s1 = new ShapeAnimationModel("R", shapeType.RECTANGLE);
     e.addShapeAnimation(s1);
     assertTrue(e.getShapeAnimations().contains(s1));
   }
@@ -37,8 +37,8 @@ public class ExcellenceAnimationModelTests {
   @Test
   public void testToStringNoAnimations() {
     ExcellenceAnimationModel e = new ExcellenceAnimationModel();
-    ShapeAnimationModel s1 = new ShapeAnimationModel("R", Shape.RECTANGLE);
-    ShapeAnimationModel s2 = new ShapeAnimationModel("O", Shape.OVAL);
+    ShapeAnimationModel s1 = new ShapeAnimationModel("R", shapeType.RECTANGLE);
+    ShapeAnimationModel s2 = new ShapeAnimationModel("O", shapeType.OVAL);
     e.addShapeAnimation(s1);
     e.addShapeAnimation(s2);
     assertEquals("Shape R Rectangle\n"
@@ -50,14 +50,14 @@ public class ExcellenceAnimationModelTests {
   @Test
   public void testToStringWithAnimations() {
     ExcellenceAnimationModel e = new ExcellenceAnimationModel();
-    ShapeAnimationModel s1 = new ShapeAnimationModel("R", Shape.RECTANGLE);
+    ShapeAnimationModel s1 = new ShapeAnimationModel("R", shapeType.RECTANGLE);
     s1.addAnimation(1, 10, 0, 1, 0, 1, 0, 1,
         0, 1, 0, 1, 0, 1, 0,
         1);
     s1.addAnimation(10, 12, 0, 1, 0, 1, 0, 1,
         0, 1, 0, 1, 0, 1, 0,
         1);
-    ShapeAnimationModel s2 = new ShapeAnimationModel("O", Shape.OVAL);
+    ShapeAnimationModel s2 = new ShapeAnimationModel("O", shapeType.OVAL);
     s2.addAnimation(1, 5, 0, 1, 0, 1, 0, 1,
         0, 1, 0, 1, 0, 1, 0,
         1);
@@ -83,7 +83,7 @@ public class ExcellenceAnimationModelTests {
   @Test(expected = IllegalArgumentException.class)
   public void testGetShapeWithObjectIdDNE() {
     ExcellenceAnimationModel e = new ExcellenceAnimationModel();
-    ShapeAnimationModel s1 = new ShapeAnimationModel("R", Shape.RECTANGLE);
+    ShapeAnimationModel s1 = new ShapeAnimationModel("R", shapeType.RECTANGLE);
     e.addShapeAnimation(s1);
     e.getShapeWithObjectId("NOT REAL ID");
   }
@@ -91,7 +91,7 @@ public class ExcellenceAnimationModelTests {
   @Test
   public void testGetShapeWithObjectIdSuccess() {
     ExcellenceAnimationModel e = new ExcellenceAnimationModel();
-    ShapeAnimationModel s1 = new ShapeAnimationModel("R", Shape.RECTANGLE);
+    ShapeAnimationModel s1 = new ShapeAnimationModel("R", shapeType.RECTANGLE);
     e.addShapeAnimation(s1);
     ShapeAnimationOperations s2 = e.getShapeWithObjectId("R");
     assertEquals(s1, s2);
@@ -100,14 +100,14 @@ public class ExcellenceAnimationModelTests {
   @Test
   public void testEquals() {
     ExcellenceAnimationModel e = new ExcellenceAnimationModel();
-    ShapeAnimationModel s1 = new ShapeAnimationModel("R", Shape.RECTANGLE);
+    ShapeAnimationModel s1 = new ShapeAnimationModel("R", shapeType.RECTANGLE);
     s1.addAnimation(1, 10, 0, 1, 0, 1, 0, 1,
         0, 1, 0, 1, 0, 1, 0,
         1);
     s1.addAnimation(10, 12, 0, 1, 0, 1, 0, 1,
         0, 1, 0, 1, 0, 1, 0,
         1);
-    ShapeAnimationModel s2 = new ShapeAnimationModel("O", Shape.OVAL);
+    ShapeAnimationModel s2 = new ShapeAnimationModel("O", shapeType.OVAL);
     s2.addAnimation(1, 5, 0, 1, 0, 1, 0, 1,
         0, 1, 0, 1, 0, 1, 0,
         1);
@@ -130,14 +130,14 @@ public class ExcellenceAnimationModelTests {
   @Test
   public void testNotEquals() {
     ExcellenceAnimationModel e = new ExcellenceAnimationModel();
-    ShapeAnimationModel s1 = new ShapeAnimationModel("R", Shape.RECTANGLE);
+    ShapeAnimationModel s1 = new ShapeAnimationModel("R", shapeType.RECTANGLE);
     s1.addAnimation(1, 10, 0, 1, 0, 1, 0, 1,
         0, 1, 0, 1, 0, 1, 0,
         1);
     s1.addAnimation(10, 12, 0, 1, 0, 1, 0, 1,
         0, 1, 0, 1, 0, 1, 0,
         1);
-    ShapeAnimationModel s2 = new ShapeAnimationModel("O", Shape.OVAL);
+    ShapeAnimationModel s2 = new ShapeAnimationModel("O", shapeType.OVAL);
     s2.addAnimation(1, 5, 0, 1, 0, 1, 0, 1,
         0, 1, 0, 1, 0, 1, 0,
         1);
@@ -151,7 +151,7 @@ public class ExcellenceAnimationModelTests {
     e.addShapeAnimation(s2);
 
     ExcellenceAnimationModel e1 = new ExcellenceAnimationModel();
-    ShapeAnimationModel s3 = new ShapeAnimationModel("L", Shape.RECTANGLE);
+    ShapeAnimationModel s3 = new ShapeAnimationModel("L", shapeType.RECTANGLE);
     s3.addAnimation(1, 10, 0, 1, 0, 1, 0, 1,
         0, 1, 0, 1, 0, 1, 0,
         1);
