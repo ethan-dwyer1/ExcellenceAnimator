@@ -80,4 +80,10 @@ public class ExcellenceAnimationModel implements ExcellenceAnimationOperations {
     return true;
   }
 
+  @Override
+  public void animationAtCurrentTick(int tick) {
+    for (ShapeAnimationOperations i : shapeAnimations) {
+      i.moveAtCurrentTick(tick);
+    }
+  }
 }
