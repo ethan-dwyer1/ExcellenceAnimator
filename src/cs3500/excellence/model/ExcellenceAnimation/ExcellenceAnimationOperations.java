@@ -1,6 +1,6 @@
 package cs3500.excellence.model.ExcellenceAnimation;
 
-import cs3500.excellence.model.ShapeAnimation.Shape;
+import cs3500.excellence.model.ShapeAnimation.ShapeAnimationModel;
 import cs3500.excellence.model.ShapeAnimation.ShapeAnimationOperations;
 import java.util.List;
 
@@ -9,10 +9,9 @@ public interface ExcellenceAnimationOperations {
   /**
    * Adds a shape to the list of ShapeAnimationModel objects.
    *
-   * @param objectId String representing object ID for the shape.
-   * @param shape    the type of shape.
+   * @param shapeAnimation Object of type interface ShapeAnimationOperations.
    */
-  void setShapeAnimation(String objectId, Shape shape);
+  void addShapeAnimation(ShapeAnimationModel shapeAnimation);
 
   /**
    * Returns a list of all the shape objects in the list.

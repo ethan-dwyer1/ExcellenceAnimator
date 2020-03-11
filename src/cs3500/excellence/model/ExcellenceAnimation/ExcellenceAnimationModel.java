@@ -1,6 +1,5 @@
 package cs3500.excellence.model.ExcellenceAnimation;
 
-import cs3500.excellence.model.ShapeAnimation.Shape;
 import cs3500.excellence.model.ShapeAnimation.ShapeAnimationModel;
 import cs3500.excellence.model.ShapeAnimation.ShapeAnimationOperations;
 import java.util.ArrayList;
@@ -19,22 +18,18 @@ public class ExcellenceAnimationModel implements ExcellenceAnimationOperations {
   }
 
   @Override
-  public void setShapeAnimation(String objectId, Shape shape) {
-    if (shape == null || objectId == null) {
-      throw new IllegalArgumentException("Parameters cannot be null");
-    }
+  public void addShapeAnimation(ShapeAnimationModel shapeAnimation) {
     for (ShapeAnimationOperations i : shapeAnimations) {
-      if (i.getObjectId().equals(objectId)) {
+      if (i.getObjectId().equals(shapeAnimation.getObjectId())) {
         throw new IllegalArgumentException("Object Id's cannot be the same");
       }
     }
-    ShapeAnimationOperations temp = new ShapeAnimationModel(objectId, shape);
-    shapeAnimations.add(temp);
+    shapeAnimations.add(new ShapeAnimationModel(shapeAnimation));
   }
 
   @Override
   public List<ShapeAnimationOperations> getShapeAnimations() {
-    return shapeAnimations;
+    return List.copyOf(shapeAnimations);
   }
 
   @Override
@@ -54,5 +49,30 @@ public class ExcellenceAnimationModel implements ExcellenceAnimationOperations {
       out += i.toString();
     }
     return out;
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj) {
+      return true;
+    }
+
+    if (!(obj instanceof ExcellenceAnimationModel)) {
+      return false;
+    }
+
+    ExcellenceAnimationModel e = (ExcellenceAnimationModel) obj;
+
+    if (e.shapeAnimations.size() != this.shapeAnimations.size()) {
+      return false;
+    }
+
+    for (int i = 0; i < this.shapeAnimations.size(); i++) {
+      if (!e.shapeAnimations.get(i).equals(this.shapeAnimations.get(i))) {
+        return false;
+      }
+    }
+
+    return true;
   }
 }

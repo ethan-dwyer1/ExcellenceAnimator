@@ -1,5 +1,7 @@
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import cs3500.excellence.model.Animation.AnimationModel;
 import cs3500.excellence.model.Animation.AnimationOperations;
@@ -12,7 +14,7 @@ import org.junit.Test;
 public class ShapeAnimationModelTests {
 
   @Test(expected = IllegalArgumentException.class)
-  public void testNullObjectId(){
+  public void testNullObjectId() {
     ShapeAnimationModel s = new ShapeAnimationModel(null, Shape.OVAL);
   }
 
@@ -39,72 +41,87 @@ public class ShapeAnimationModelTests {
     assertEquals("R", s.getObjectId());
   }
 
+  @Test
+  public void testValidTicks() {
+    try {
+      ShapeAnimationModel s = new ShapeAnimationModel("R", Shape.RECTANGLE);
+      s.addAnimation(0, 10, 0, 1, 0, 1, 0, 1,
+          0, 1, 0, 1, 0, 1, 0,
+          1);
+      s.addAnimation(10, 15, 0, 1, 0, 1, 0, 1,
+          0, 1, 0, 1, 0, 1, 0,
+          1);
+    } catch (Exception e) {
+      fail();
+    }
+  }
+
   @Test(expected = IllegalArgumentException.class)
   public void testStartTickInsideOtherInterval() {
     ShapeAnimationModel s = new ShapeAnimationModel("R", Shape.RECTANGLE);
-    s.setAnimation(0,10,0,1,0,1,0,1,
-        0,1,0,1,0,1,0,
+    s.addAnimation(0, 10, 0, 1, 0, 1, 0, 1,
+        0, 1, 0, 1, 0, 1, 0,
         1);
-    s.setAnimation(5,15,0,1,0,1,0,1,
-        0,1,0,1,0,1,0,
+    s.addAnimation(5, 15, 0, 1, 0, 1, 0, 1,
+        0, 1, 0, 1, 0, 1, 0,
         1);
   }
 
   @Test(expected = IllegalArgumentException.class)
   public void testEndTickInsideOtherInterval() {
     ShapeAnimationModel s = new ShapeAnimationModel("R", Shape.RECTANGLE);
-    s.setAnimation(5,10,0,1,0,1,0,1,
-        0,1,0,1,0,1,0,
+    s.addAnimation(5, 10, 0, 1, 0, 1, 0, 1,
+        0, 1, 0, 1, 0, 1, 0,
         1);
-    s.setAnimation(0,7,0,1,0,1,0,1,
-        0,1,0,1,0,1,0,
+    s.addAnimation(0, 7, 0, 1, 0, 1, 0, 1,
+        0, 1, 0, 1, 0, 1, 0,
         1);
   }
 
   @Test(expected = IllegalArgumentException.class)
   public void testEqualIntervals() {
     ShapeAnimationModel s = new ShapeAnimationModel("R", Shape.RECTANGLE);
-    s.setAnimation(0,1,0,1,0,1,0,1,
-        0,1,0,1,0,1,0,
+    s.addAnimation(0, 1, 0, 1, 0, 1, 0, 1,
+        0, 1, 0, 1, 0, 1, 0,
         1);
-    s.setAnimation(0,1,0,1,0,1,0,1,
-        0,1,0,1,0,1,0,
+    s.addAnimation(0, 1, 0, 1, 0, 1, 0, 1,
+        0, 1, 0, 1, 0, 1, 0,
         1);
   }
 
   @Test(expected = IllegalArgumentException.class)
   public void testStartTickSameEndValid() {
     ShapeAnimationModel s = new ShapeAnimationModel("R", Shape.RECTANGLE);
-    s.setAnimation(0,1,0,1,0,1,0,1,
-        0,1,0,1,0,1,0,
+    s.addAnimation(0, 1, 0, 1, 0, 1, 0, 1,
+        0, 1, 0, 1, 0, 1, 0,
         1);
-    s.setAnimation(0,2,0,1,0,1,0,1,
-        0,1,0,1,0,1,0,
+    s.addAnimation(0, 2, 0, 1, 0, 1, 0, 1,
+        0, 1, 0, 1, 0, 1, 0,
         1);
   }
 
   @Test(expected = IllegalArgumentException.class)
   public void testEndTickSameStartValid() {
     ShapeAnimationModel s = new ShapeAnimationModel("R", Shape.RECTANGLE);
-    s.setAnimation(1,2,0,1,0,1,0,1,
-        0,1,0,1,0,1,0,
+    s.addAnimation(1, 2, 0, 1, 0, 1, 0, 1,
+        0, 1, 0, 1, 0, 1, 0,
         1);
-    s.setAnimation(0,2,0,1,0,1,0,1,
-        0,1,0,1,0,1,0,
+    s.addAnimation(0, 2, 0, 1, 0, 1, 0, 1,
+        0, 1, 0, 1, 0, 1, 0,
         1);
   }
 
   @Test
   public void testToString() {
     ShapeAnimationModel s = new ShapeAnimationModel("R", Shape.RECTANGLE);
-    s.setAnimation(0,1,0,1,0,1,0,1,
-        0,1,0,1,0,1,0,
+    s.addAnimation(0, 1, 0, 1, 0, 1, 0, 1,
+        0, 1, 0, 1, 0, 1, 0,
         1);
-    s.setAnimation(1,2,0,1,0,1,0,1,
-        0,1,0,1,0,1,0,
+    s.addAnimation(1, 2, 0, 1, 0, 1, 0, 1,
+        0, 1, 0, 1, 0, 1, 0,
         1);
-    s.setAnimation(2,3,0,1,0,1,0,1,
-        0,1,0,1,0,1,0,
+    s.addAnimation(2, 3, 0, 1, 0, 1, 0, 1,
+        0, 1, 0, 1, 0, 1, 0,
         1);
     assertEquals("Shape R Rectangle\n"
         + "motion R 0 0 0 0 0 0 0 0   1 1 1 1 1 1 1 1\n"
@@ -113,27 +130,27 @@ public class ShapeAnimationModelTests {
   }
 
   @Test
-  public void testGetAnimations(){
+  public void testGetAnimations() {
     ShapeAnimationModel s = new ShapeAnimationModel("R", Shape.RECTANGLE);
-    s.setAnimation(0,1,0,1,0,1,0,1,
-        0,1,0,1,0,1,0,
+    s.addAnimation(0, 1, 0, 1, 0, 1, 0, 1,
+        0, 1, 0, 1, 0, 1, 0,
         1);
-    s.setAnimation(1,2,0,1,0,1,0,1,
-        0,1,0,1,0,1,0,
+    s.addAnimation(1, 2, 0, 1, 0, 1, 0, 1,
+        0, 1, 0, 1, 0, 1, 0,
         1);
-    s.setAnimation(2,3,0,1,0,1,0,1,
-        0,1,0,1,0,1,0,
+    s.addAnimation(2, 3, 0, 1, 0, 1, 0, 1,
+        0, 1, 0, 1, 0, 1, 0,
         1);
 
     List<AnimationOperations> sList = new ArrayList<>();
-    sList.add(new AnimationModel("R", 0,1,0,1,0,1,0,1,
-        0,1,0,1,0,1,0,
+    sList.add(new AnimationModel("R", 0, 1, 0, 1, 0, 1, 0, 1,
+        0, 1, 0, 1, 0, 1, 0,
         1));
-    sList.add(new AnimationModel("R", 1,2,0,1,0,1,0,1,
-        0,1,0,1,0,1,0,
+    sList.add(new AnimationModel("R", 1, 2, 0, 1, 0, 1, 0, 1,
+        0, 1, 0, 1, 0, 1, 0,
         1));
-    sList.add(new AnimationModel("R", 2,3,0,1,0,1,0,1,
-        0,1,0,1,0,1,0,
+    sList.add(new AnimationModel("R", 2, 3, 0, 1, 0, 1, 0, 1,
+        0, 1, 0, 1, 0, 1, 0,
         1));
 
     assertEquals(sList, s.getAnimations());
@@ -143,6 +160,60 @@ public class ShapeAnimationModelTests {
   public void testGetEmptyAnimations() {
     ShapeAnimationModel s = new ShapeAnimationModel("R", Shape.RECTANGLE);
     assertTrue(s.getAnimations().isEmpty());
+  }
+
+  @Test
+  public void testEquals() {
+    ShapeAnimationModel s = new ShapeAnimationModel("R", Shape.RECTANGLE);
+    s.addAnimation(0, 1, 0, 1, 0, 1, 0, 1,
+        0, 1, 0, 1, 0, 1, 0,
+        1);
+    s.addAnimation(1, 2, 0, 1, 0, 1, 0, 1,
+        0, 1, 0, 1, 0, 1, 0,
+        1);
+    s.addAnimation(2, 3, 0, 1, 0, 1, 0, 1,
+        0, 1, 0, 1, 0, 1, 0,
+        1);
+
+    ShapeAnimationModel s1 = new ShapeAnimationModel("R", Shape.RECTANGLE);
+    s1.addAnimation(0, 1, 0, 1, 0, 1, 0, 1,
+        0, 1, 0, 1, 0, 1, 0,
+        1);
+    s1.addAnimation(1, 2, 0, 1, 0, 1, 0, 1,
+        0, 1, 0, 1, 0, 1, 0,
+        1);
+    s1.addAnimation(2, 3, 0, 1, 0, 1, 0, 1,
+        0, 1, 0, 1, 0, 1, 0,
+        1);
+
+    assertEquals(s, s1);
+  }
+
+  @Test
+  public void testDoesNotEqual() {
+    ShapeAnimationModel s = new ShapeAnimationModel("R", Shape.RECTANGLE);
+    s.addAnimation(0, 1, 0, 1, 0, 1, 0, 1,
+        0, 1, 0, 1, 0, 1, 0,
+        1);
+    s.addAnimation(1, 2, 0, 1, 0, 1, 0, 1,
+        0, 1, 0, 1, 0, 1, 0,
+        1);
+    s.addAnimation(2, 3, 0, 1, 0, 1, 0, 1,
+        0, 1, 0, 1, 0, 1, 0,
+        1);
+
+    ShapeAnimationModel s1 = new ShapeAnimationModel("R", Shape.RECTANGLE);
+    s1.addAnimation(0, 1, 0, 1, 1, 1, 0, 1,
+        0, 1, 0, 1, 0, 1, 0,
+        1);
+    s1.addAnimation(1, 2, 0, 1, 0, 1, 0, 1,
+        0, 1, 0, 1, 0, 1, 0,
+        1);
+    s1.addAnimation(2, 3, 0, 1, 0, 1, 0, 1,
+        0, 1, 0, 1, 0, 1, 0,
+        1);
+
+    assertNotEquals(s, s1);
   }
 
 

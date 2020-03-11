@@ -1,9 +1,10 @@
 package cs3500.excellence.model.ShapeAnimation;
 
 import cs3500.excellence.model.Animation.AnimationOperations;
+import cs3500.excellence.model.AnimationState;
 import java.util.List;
 
-public interface ShapeAnimationOperations {
+public interface ShapeAnimationOperations extends AnimationState {
 
   /**
    * Returns a list of animations on the current shape.
@@ -34,7 +35,7 @@ public interface ShapeAnimationOperations {
    * @throws IllegalArgumentException if the animation overlaps with another animation on the
    *                                  shape.
    */
-  void setAnimation(int startTick, int endTick, int startX, int endX, int startY,
+  void addAnimation(int startTick, int endTick, int startX, int endX, int startY,
       int endY, int startWidth, int endWidth, int startHeight, int endHeight, int startRed,
       int endRed, int startGreen, int endGreen, int startBlue, int endBlue);
 

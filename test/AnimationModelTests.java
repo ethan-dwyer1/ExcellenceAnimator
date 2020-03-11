@@ -1,4 +1,6 @@
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import cs3500.excellence.model.Animation.AnimationModel;
 import org.junit.Test;
@@ -18,119 +20,119 @@ public class AnimationModelTests {
 
 
   @Test(expected = IllegalArgumentException.class)
-  public void testNegativeStartTick(){
+  public void testNegativeStartTick() {
     AnimationModel a = new AnimationModel("R", -1, 5, 0, 5,
         0, 5, 0, 5, 0, 5, 0,
         5, 0, 5, 0, 5);
   }
 
   @Test(expected = IllegalArgumentException.class)
-  public void testNegativeEndTick(){
+  public void testNegativeEndTick() {
     AnimationModel a = new AnimationModel("R", 0, -1, 0, 5,
         0, 5, 0, 5, 0, 5, 0,
         5, 0, 5, 0, 5);
   }
 
   @Test(expected = IllegalArgumentException.class)
-  public void testStartTickGreaterThanEndTick(){
+  public void testStartTickGreaterThanEndTick() {
     AnimationModel a = new AnimationModel("R", 5, 0, 0, 5,
         0, 5, 0, 5, 0, 5, 0,
         5, 0, 5, 0, 5);
   }
 
   @Test(expected = IllegalArgumentException.class)
-  public void testNegativeStartX(){
+  public void testNegativeStartX() {
     AnimationModel a = new AnimationModel("R", 0, 5, -1, 5,
         0, 5, 0, 5, 0, 5, 0,
         5, 0, 5, 0, 5);
   }
 
   @Test(expected = IllegalArgumentException.class)
-  public void testNegativeEndX(){
+  public void testNegativeEndX() {
     AnimationModel a = new AnimationModel("R", 0, 5, 0, -1,
         0, 5, 0, 5, 0, 5, 0,
         5, 0, 5, 0, 5);
   }
 
   @Test(expected = IllegalArgumentException.class)
-  public void testNegativeStartY(){
+  public void testNegativeStartY() {
     AnimationModel a = new AnimationModel("R", 0, 5, 0, 5,
         -1, 5, 0, 5, 0, 5, 0,
         5, 0, 5, 0, 5);
   }
 
   @Test(expected = IllegalArgumentException.class)
-  public void testNegativeEndY(){
+  public void testNegativeEndY() {
     AnimationModel a = new AnimationModel("R", 0, 5, 0, 5,
         0, -1, 0, 5, 0, 5, 0,
         5, 0, 5, 0, 5);
   }
 
   @Test(expected = IllegalArgumentException.class)
-  public void testNegativeStartWidth(){
+  public void testNegativeStartWidth() {
     AnimationModel a = new AnimationModel("R", 0, 5, 0, 5,
         0, 5, -1, 5, 0, 5, 0,
         5, 0, 5, 0, 5);
   }
 
   @Test(expected = IllegalArgumentException.class)
-  public void testNegativeEndWidth(){
+  public void testNegativeEndWidth() {
     AnimationModel a = new AnimationModel("R", 0, 5, 0, 5,
         0, 5, 0, -1, 0, 5, 0,
         5, 0, 5, 0, 5);
   }
 
   @Test(expected = IllegalArgumentException.class)
-  public void testNegativeStartHeight(){
+  public void testNegativeStartHeight() {
     AnimationModel a = new AnimationModel("R", 0, 5, 0, 5,
         0, 5, 0, 5, -1, 5, 0,
         5, 0, 5, 0, 5);
   }
 
   @Test(expected = IllegalArgumentException.class)
-  public void testNegativeEndHeight(){
+  public void testNegativeEndHeight() {
     AnimationModel a = new AnimationModel("R", 0, 5, 0, 5,
         0, 5, 0, 5, 0, -1, 0,
         5, 0, 5, 0, 5);
   }
 
   @Test(expected = IllegalArgumentException.class)
-  public void testInvalidStartRed(){
+  public void testInvalidStartRed() {
     AnimationModel a = new AnimationModel("R", 0, 5, 0, 5,
         0, 5, 0, 5, 0, 5, -1,
         5, 0, 5, 0, 5);
   }
 
   @Test(expected = IllegalArgumentException.class)
-  public void testInvalidEndRed(){
+  public void testInvalidEndRed() {
     AnimationModel a = new AnimationModel("R", 0, 5, 0, 5,
         0, 5, 0, 5, 0, 5, 0,
         -1, 0, 5, 0, 5);
   }
 
   @Test(expected = IllegalArgumentException.class)
-  public void testInvalidStartGreen(){
+  public void testInvalidStartGreen() {
     AnimationModel a = new AnimationModel("R", 0, 5, 0, 5,
         0, 5, 0, 5, 0, 5, 0,
         5, -1, 5, 0, 5);
   }
 
   @Test(expected = IllegalArgumentException.class)
-  public void testInvalidEndGreen(){
+  public void testInvalidEndGreen() {
     AnimationModel a = new AnimationModel("R", 0, 5, 0, 5,
         0, 5, 0, 5, 0, 5, 0,
         5, 0, -1, 0, 5);
   }
 
   @Test(expected = IllegalArgumentException.class)
-  public void testInvalidStartBlue(){
+  public void testInvalidStartBlue() {
     AnimationModel a = new AnimationModel("R", 0, 5, 0, 5,
         0, 5, 0, 5, 0, 5, 0,
         5, 0, 5, -1, 5);
   }
 
   @Test(expected = IllegalArgumentException.class)
-  public void testInvalidEndBlue(){
+  public void testInvalidEndBlue() {
     AnimationModel a = new AnimationModel("R", 0, 5, 0, 5,
         0, 5, 0, 5, 0, 5, 0,
         5, 0, 5, 0, -1);
@@ -161,5 +163,31 @@ public class AnimationModelTests {
         5, 0, 5, 0, 5);
 
     assertEquals(5, a.getEndTick());
+  }
+
+  @Test
+  public void testEquals() {
+    AnimationModel a = new AnimationModel("R", 0, 5, 0, 5,
+        0, 5, 0, 5, 0, 5, 0,
+        5, 0, 5, 0, 5);
+
+    AnimationModel a1 = new AnimationModel("R", 0, 5, 0, 5,
+        0, 5, 0, 5, 0, 5, 0,
+        5, 0, 5, 0, 5);
+
+    assertTrue(a.equals(a1));
+  }
+
+  @Test
+  public void testDoesNotEqual() {
+    AnimationModel a = new AnimationModel("R", 0, 5, 0, 5,
+        0, 5, 0, 5, 0, 5, 0,
+        5, 0, 5, 0, 5);
+
+    AnimationModel a1 = new AnimationModel("G", 0, 5, 0, 5,
+        0, 5, 0, 5, 0, 5, 0,
+        5, 0, 5, 0, 5);
+
+    assertFalse(a.equals(a1));
   }
 }
