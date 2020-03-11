@@ -27,6 +27,8 @@ public class AnimationModel implements AnimationOperations {
   private final int startBlue;
   private final int endBlue;
 
+  private final int stepAmt;
+
   /**
    * Public constructor for an AnimationModel. Sets the parameters for the given animation.
    *
@@ -83,6 +85,8 @@ public class AnimationModel implements AnimationOperations {
     this.endGreen = endGreen;
     this.startBlue = startBlue;
     this.endBlue = endBlue;
+
+    this.stepAmt = endTick - startTick;
   }
 
   @Override
@@ -98,6 +102,41 @@ public class AnimationModel implements AnimationOperations {
   @Override
   public int getEndTick() {
     return endTick;
+  }
+
+  @Override
+  public int getHeightChange() {
+    return (endHeight - startHeight) / stepAmt;
+  }
+
+  @Override
+  public int getWidthChange() {
+    return (endWidth - startWidth) / stepAmt;
+  }
+
+  @Override
+  public int getXChange() {
+    return (endX - startX) / stepAmt;
+  }
+
+  @Override
+  public int getYChange() {
+    return (endY - startY) / stepAmt;
+  }
+
+  @Override
+  public int getRedChange() {
+    return (endRed - startRed) / stepAmt;
+  }
+
+  @Override
+  public int getGreenChange() {
+    return (endGreen - startGreen) / stepAmt;
+  }
+
+  @Override
+  public int getBlueChange() {
+    return (endBlue - startBlue) / stepAmt;
   }
 
   @Override
