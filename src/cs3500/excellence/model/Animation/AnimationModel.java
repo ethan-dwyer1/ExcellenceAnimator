@@ -53,10 +53,13 @@ public class AnimationModel implements AnimationOperations {
       int endY, int startWidth, int endWidth, int startHeight, int endHeight, int startRed,
       int endRed, int startGreen, int endGreen, int startBlue, int endBlue) {
 
-    if (startTick > endTick || startTick < 0 || endTick < 0 || startX < 0 || endX < 0 || startY < 0
-        || endY < 0 || startWidth < 0 || endWidth < 0 || startHeight < 0 || endHeight < 0
-        || !isValidColor(startRed) || !isValidColor(endRed) || !isValidColor(startGreen)
-        || !isValidColor(endGreen) || !isValidColor(startBlue) || !isValidColor(endBlue)) {
+    if (startTick > endTick || startTick < 1 || endTick < 1
+        //We need to accommodate negative positions for objects moving offscreen
+        //|| startX < 0 || endX < 0 || startY < 0 || endY < 0
+        || startWidth < 0 || endWidth < 0 || startHeight < 0 || endHeight < 0
+        || !isValidColor(startRed) || !isValidColor(endRed)
+        || !isValidColor(startGreen) || !isValidColor(endGreen)
+        || !isValidColor(startBlue) || !isValidColor(endBlue)) {
       throw new IllegalArgumentException("Invalid parameters");
     }
 
