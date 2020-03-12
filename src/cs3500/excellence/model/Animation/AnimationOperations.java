@@ -77,37 +77,51 @@ public interface AnimationOperations {
   int getBlueChange();
 
   /**
-   * @return
+   * Returns the starting red color.
+   *
+   * @return starting red color.
    */
   int getRed();
 
   /**
-   * @return
+   * Return teh starting blue color.
+   *
+   * @return starting blue color.
    */
   int getBlue();
 
   /**
-   * @return
+   * Return starting green color.
+   *
+   * @return starting green color.
    */
   int getGreen();
 
   /**
-   * @return
+   * starting X position.
+   *
+   * @return the starting x position.
    */
   int getX();
 
   /**
-   * @return
+   * Returns starting Y position.
+   *
+   * @return starting y position.
    */
   int getY();
 
   /**
-   * @return
+   * Returns starting width.
+   *
+   * @return starting width.
    */
   int getWidth();
 
   /**
-   * @return
+   * returns starting height.
+   *
+   * @return starting height.
    */
   int getHeight();
 }

@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
+import javafx.animation.Animation;
 
 /**
  * A model to represent the animations applied to a single shape over a period of ticks.
