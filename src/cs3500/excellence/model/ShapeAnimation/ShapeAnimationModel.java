@@ -120,6 +120,9 @@ public class ShapeAnimationModel implements ShapeAnimationOperations {
 
   @Override
   public void moveAtCurrentTick(int currentTick) {
+    if (shape == null) {
+      throw new IllegalStateException("Shape cannot be null, cant move shape with no animations");
+    }
 
     for (AnimationOperations a : animationList) {
       if (currentTick > a.getStartTick() && currentTick <= a.getEndTick()) {
@@ -165,8 +168,6 @@ public class ShapeAnimationModel implements ShapeAnimationOperations {
         return false;
       }
     }
-
-
 
     return this.objectId.equals(s.objectId) && this.shape == null && s.shape == null
         || this.shape.equals(s.shape);

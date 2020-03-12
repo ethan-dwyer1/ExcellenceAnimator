@@ -217,6 +217,7 @@ public class ShapeAnimationModelTests {
     assertNotEquals(s, s1);
   }
 
+  //TODO: Do this test below
   @Test
   public void testMoveAtCurrentTick() {
     ShapeAnimationModel s = new ShapeAnimationModel("R", shapeType.RECTANGLE);
@@ -229,6 +230,41 @@ public class ShapeAnimationModelTests {
     s.addAnimation(3, 4, 0, 1, 0, 1, 0, 1,
         0, 1, 0, 1, 0, 1, 0,
         1);
+  }
+
+  @Test(expected = IllegalStateException.class)
+  public void testMoveAtCurrentTickIllegalState() {
+    
+  }
+
+  @Test
+  public void testGetCurrentPositon() {
+
+  }
+
+  @Test (expected = IllegalStateException.class)
+  public void testGetCurrentPositionIllegalState() {
+
+  }
+
+  @Test
+  public void testGetCurrentColor() {
+
+  }
+
+  @Test (expected = IllegalStateException.class)
+  public void testGetCurrentColorIllegalState() {
+
+  }
+
+  @Test
+  public void testGetCurrentDimension() {
+
+  }
+
+  @Test (expected = IllegalStateException.class)
+  public void testGetCurrentDimensionIllegalState() {
+
   }
 
 }
