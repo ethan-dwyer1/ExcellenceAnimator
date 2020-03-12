@@ -29,7 +29,7 @@ public class ShapeAnimationModelTests {
     assertTrue(s.getAnimations().isEmpty());
   }
 
-  @Test
+  @Test (expected = IllegalStateException.class)
   public void testToStringEmptyAnimations() {
     ShapeAnimationModel s = new ShapeAnimationModel("R", shapeType.RECTANGLE);
     assertEquals("Shape R Rectangle\n\n", s.toString());
