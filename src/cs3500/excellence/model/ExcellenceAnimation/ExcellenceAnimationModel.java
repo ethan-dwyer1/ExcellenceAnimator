@@ -2,7 +2,6 @@ package cs3500.excellence.model.ExcellenceAnimation;
 
 import cs3500.excellence.model.ShapeAnimation.ShapeAnimationModel;
 import cs3500.excellence.model.ShapeAnimation.ShapeAnimationOperations;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;

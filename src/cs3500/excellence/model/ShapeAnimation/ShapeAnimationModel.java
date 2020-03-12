@@ -17,7 +17,8 @@ import java.util.Objects;
 public class ShapeAnimationModel implements ShapeAnimationOperations {
 
   private final String objectId;
-  private final Shape shape;
+  private Shape shape;
+  private shapeType type;
   private List<AnimationOperations> animationList;
 
   /**
@@ -33,13 +34,15 @@ public class ShapeAnimationModel implements ShapeAnimationOperations {
       throw new IllegalArgumentException("Parameters cannot be null");
     }
     this.objectId = objectId;
-    AnimationOperations a = getFirstAnimation();
-    if (a != null) {
-      this.shape = new Shape(a.getRed(), a.getGreen(), a.getBlue(), a.getWidth(),
-          a.getHeight(), a.getX(), a.getY(), type);
-    } else {
-      this.shape = null;
-    }
+//    AnimationOperations a = getFirstAnimation();
+//    if (a == null) {
+//      throw new IllegalArgumentException("Cannot create a ShapeAnimation without any animations");
+//    }
+//
+//    this.shape = new Shape(a.getRed(), a.getGreen(), a.getBlue(), a.getWidth(),
+//        a.getHeight(), a.getX(), a.getY(), type);
+    this.shape = null;
+    this.type = type;
 
     this.animationList = new ArrayList<>();
   }
@@ -57,16 +60,25 @@ public class ShapeAnimationModel implements ShapeAnimationOperations {
 
   @Override
   public Point2D getCurrentPosition() {
+    if (shape == null) {
+      throw new IllegalArgumentException("Shape cannot be null, no animations have been set");
+    }
     return shape.getPosition();
   }
 
   @Override
   public Dimension2D getCurrentDimensions() {
+    if (shape == null) {
+      throw new IllegalArgumentException("Shape cannot be null, no animations have been set yet.");
+    }
     return shape.getDimensions();
   }
 
   @Override
   public Color getCurrentColor() {
+    if (shape == null) {
+      throw new IllegalArgumentException("Shape cannot be null, no animations have been set yet.");
+    }
     return shape.getColor();
   }
 
@@ -94,7 +106,11 @@ public class ShapeAnimationModel implements ShapeAnimationOperations {
     AnimationModel a = new AnimationModel(objectId, startTick, endTick, startX, endX, startY, endY,
         startWidth, endWidth, startHeight, endHeight, startRed, endRed, startGreen, endGreen,
         startBlue, endBlue);
+
     animationList.add(a);
+
+    setShape();
+
   }
 
   @Override
@@ -104,6 +120,7 @@ public class ShapeAnimationModel implements ShapeAnimationOperations {
 
   @Override
   public void moveAtCurrentTick(int currentTick) {
+
     for (AnimationOperations a : animationList) {
       if (currentTick > a.getStartTick() && currentTick <= a.getEndTick()) {
         shape.setDimensions(a.getWidthChange(), a.getHeightChange());
@@ -170,7 +187,7 @@ public class ShapeAnimationModel implements ShapeAnimationOperations {
    */
   private AnimationOperations getFirstAnimation() {
     int lowestTick = Integer.MAX_VALUE;
-    if(animationList.isEmpty()) {
+    if (animationList.isEmpty()) {
       return null;
     }
     AnimationOperations first = animationList.get(0);
@@ -182,5 +199,11 @@ public class ShapeAnimationModel implements ShapeAnimationOperations {
       }
     }
     return first;
+  }
+
+  private void setShape() {
+    AnimationOperations a = getFirstAnimation();
+    shape = new Shape(a.getRed(), a.getGreen(), a.getBlue(), a.getWidth(), a.getHeight(),
+        a.getX(), a.getY(), type);
   }
 }
