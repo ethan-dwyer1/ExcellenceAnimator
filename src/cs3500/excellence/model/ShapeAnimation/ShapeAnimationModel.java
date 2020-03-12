@@ -166,6 +166,9 @@ public class ShapeAnimationModel implements ShapeAnimationOperations {
 
   private AnimationOperations getFirstAnimation() {
     int lowestTick = Integer.MAX_VALUE;
+    if(animationList.isEmpty()) {
+      return null;
+    }
     AnimationOperations first = animationList.get(0);
     for (int i = 0; i < animationList.size(); i++) {
       AnimationOperations temp = animationList.get(i);
