@@ -133,6 +133,9 @@ public class ShapeAnimationModel implements ShapeAnimationOperations {
 
   @Override
   public String toString() {
+    if (shape == null) {
+      throw new IllegalStateException("shape cannot be null");
+    }
     String out = "Shape " + objectId + " " + shape.toString() + "\n";
     for (AnimationOperations i : animationList) {
       out += "motion " + objectId + " " + i.toString();
@@ -163,7 +166,10 @@ public class ShapeAnimationModel implements ShapeAnimationOperations {
       }
     }
 
-    return this.objectId.equals(s.objectId) && this.shape.equals(s.shape);
+
+
+    return this.objectId.equals(s.objectId) && this.shape == null && s.shape == null
+        || this.shape.equals(s.shape);
   }
 
   @Override

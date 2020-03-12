@@ -34,7 +34,7 @@ public class ExcellenceAnimationModelTests {
     assertTrue(e.getShapeAnimations().isEmpty());
   }
 
-  @Test
+  @Test (expected = IllegalStateException.class)
   public void testToStringNoAnimations() {
     ExcellenceAnimationModel e = new ExcellenceAnimationModel();
     ShapeAnimationModel s1 = new ShapeAnimationModel("R", shapeType.RECTANGLE);
