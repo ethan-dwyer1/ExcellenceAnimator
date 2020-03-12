@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
-import javafx.animation.Animation;
 
 /**
  * A model to represent the animations applied to a single shape over a period of ticks.
@@ -164,6 +163,11 @@ public class ShapeAnimationModel implements ShapeAnimationOperations {
     return Objects.hash(objectId, shape, hashable);
   }
 
+  /**
+   * Finds and returns the animation that begins on the earliest tick
+   *
+   * @return the first animation chronologically
+   */
   private AnimationOperations getFirstAnimation() {
     int lowestTick = Integer.MAX_VALUE;
     if(animationList.isEmpty()) {
