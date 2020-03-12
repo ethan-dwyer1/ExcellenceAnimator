@@ -7,6 +7,9 @@ import cs3500.excellence.model.Animation.AnimationModel;
 import cs3500.excellence.model.Animation.AnimationOperations;
 import cs3500.excellence.model.ShapeAnimation.Shape.shapeType;
 import cs3500.excellence.model.ShapeAnimation.ShapeAnimationModel;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.Test;
@@ -234,37 +237,53 @@ public class ShapeAnimationModelTests {
 
   @Test(expected = IllegalStateException.class)
   public void testMoveAtCurrentTickIllegalState() {
-    
+    ShapeAnimationModel s = new ShapeAnimationModel("R", shapeType.RECTANGLE);
+    s.moveAtCurrentTick(10);
   }
 
   @Test
-  public void testGetCurrentPositon() {
-
+  public void testGetCurrentPosition() {
+    ShapeAnimationModel s = new ShapeAnimationModel("R", shapeType.RECTANGLE);
+    s.addAnimation(1, 2, 0, 1, 0, 1, 0, 1,
+        0, 1, 0, 1, 0, 1, 0,
+        1);
+    assertEquals(new Point(0, 0), s.getCurrentPosition());
   }
 
   @Test (expected = IllegalStateException.class)
   public void testGetCurrentPositionIllegalState() {
-
+    ShapeAnimationModel s = new ShapeAnimationModel("R", shapeType.RECTANGLE);
+    assertEquals(new Point(0, 0), s.getCurrentPosition());
   }
 
   @Test
   public void testGetCurrentColor() {
-
+    ShapeAnimationModel s = new ShapeAnimationModel("R", shapeType.RECTANGLE);
+    s.addAnimation(1, 2, 0, 1, 0, 1, 0, 1,
+        0, 1, 0, 1, 0, 1, 0,
+        1);
+    assertEquals(new Color(0,0,0), s.getCurrentColor());
   }
 
   @Test (expected = IllegalStateException.class)
   public void testGetCurrentColorIllegalState() {
-
+    ShapeAnimationModel s = new ShapeAnimationModel("R", shapeType.RECTANGLE);
+    assertEquals(new Color(0,0,0), s.getCurrentColor());
   }
 
   @Test
   public void testGetCurrentDimension() {
-
+    ShapeAnimationModel s = new ShapeAnimationModel("R", shapeType.RECTANGLE);
+    s.addAnimation(1, 2, 0, 1, 0, 1, 0, 1,
+        0, 1, 0, 1, 0, 1, 0,
+        1);
+    assertEquals(new Dimension(0,0), s.getCurrentDimensions());
   }
 
   @Test (expected = IllegalStateException.class)
   public void testGetCurrentDimensionIllegalState() {
-
+    ShapeAnimationModel s = new ShapeAnimationModel("R", shapeType.RECTANGLE);
+    assertEquals(new Dimension(0,0), s.getCurrentDimensions());
   }
 
 }
