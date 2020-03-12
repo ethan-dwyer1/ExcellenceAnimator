@@ -67,7 +67,7 @@ public class ShapeAnimationModelTests {
         1);
   }
 
-  @Test(expected = IllegalArgumentException.class)
+  @Test(expected = IllegalStateException.class)
   public void testEndTickInsideOtherInterval() {
     ShapeAnimationModel s = new ShapeAnimationModel("R", shapeType.RECTANGLE);
     s.addAnimation(5, 10, 0, 1, 0, 1, 0, 1,
@@ -100,7 +100,7 @@ public class ShapeAnimationModelTests {
         1);
   }
 
-  @Test(expected = IllegalArgumentException.class)
+  @Test(expected = IllegalStateException.class)
   public void testEndTickSameStartValid() {
     ShapeAnimationModel s = new ShapeAnimationModel("R", shapeType.RECTANGLE);
     s.addAnimation(1, 2, 0, 1, 0, 1, 0, 1,
