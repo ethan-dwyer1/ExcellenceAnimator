@@ -61,7 +61,7 @@ public class ShapeAnimationModel implements ShapeAnimationOperations {
   @Override
   public Point2D getCurrentPosition() {
     if (shape == null) {
-      throw new IllegalArgumentException("Shape cannot be null, no animations have been set");
+      throw new IllegalStateException("Shape cannot be null, no animations have been set");
     }
     return shape.getPosition();
   }
@@ -69,7 +69,7 @@ public class ShapeAnimationModel implements ShapeAnimationOperations {
   @Override
   public Dimension2D getCurrentDimensions() {
     if (shape == null) {
-      throw new IllegalArgumentException("Shape cannot be null, no animations have been set yet.");
+      throw new IllegalStateException("Shape cannot be null, no animations have been set yet.");
     }
     return shape.getDimensions();
   }
@@ -77,7 +77,7 @@ public class ShapeAnimationModel implements ShapeAnimationOperations {
   @Override
   public Color getCurrentColor() {
     if (shape == null) {
-      throw new IllegalArgumentException("Shape cannot be null, no animations have been set yet.");
+      throw new IllegalStateException("Shape cannot be null, no animations have been set yet.");
     }
     return shape.getColor();
   }
@@ -98,7 +98,7 @@ public class ShapeAnimationModel implements ShapeAnimationOperations {
       if ((startTick > i.getStartTick() && startTick < i.getEndTick())
           || (endTick > i.getStartTick() && endTick < i.getEndTick())
           || (endTick == i.getEndTick() || startTick == i.getStartTick())) {
-        throw new IllegalArgumentException(
+        throw new IllegalStateException(
             "Cannot start a new animation until the first is complete.");
       }
     }
