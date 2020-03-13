@@ -1,8 +1,8 @@
-package cs3500.excellence.model.ShapeAnimation;
+package cs3500.excellence.model.shapeanimation;
 
-import cs3500.excellence.model.Animation.AnimationModel;
-import cs3500.excellence.model.Animation.AnimationOperations;
-import cs3500.excellence.model.ShapeAnimation.Shape.shapeType;
+import cs3500.excellence.model.animation.AnimationModel;
+import cs3500.excellence.model.animation.AnimationOperations;
+import cs3500.excellence.model.shapeanimation.Shape.shapeType;
 import java.awt.Color;
 import java.awt.geom.Dimension2D;
 import java.awt.geom.Point2D;
@@ -34,13 +34,6 @@ public class ShapeAnimationModel implements ShapeAnimationOperations {
       throw new IllegalArgumentException("Parameters cannot be null");
     }
     this.objectId = objectId;
-//    AnimationOperations a = getFirstAnimation();
-//    if (a == null) {
-//      throw new IllegalArgumentException("Cannot create a ShapeAnimation without any animations");
-//    }
-//
-//    this.shape = new Shape(a.getRed(), a.getGreen(), a.getBlue(), a.getWidth(),
-//        a.getHeight(), a.getX(), a.getY(), type);
     this.shape = null;
     this.type = type;
 
@@ -188,7 +181,7 @@ public class ShapeAnimationModel implements ShapeAnimationOperations {
   }
 
   /**
-   * Finds and returns the animation that begins on the earliest tick
+   * Finds and returns the animation that begins on the earliest tick.
    *
    * @return the first animation chronologically
    */

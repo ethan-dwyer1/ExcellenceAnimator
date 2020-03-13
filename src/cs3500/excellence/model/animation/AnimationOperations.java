@@ -1,8 +1,8 @@
-package cs3500.excellence.model.Animation;
+package cs3500.excellence.model.animation;
 
 
 /**
- *
+ * An interface that details the operations that can occur on an animation.
  */
 public interface AnimationOperations {
 

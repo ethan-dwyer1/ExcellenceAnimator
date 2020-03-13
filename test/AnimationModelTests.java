@@ -2,9 +2,12 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-import cs3500.excellence.model.Animation.AnimationModel;
+import cs3500.excellence.model.animation.AnimationModel;
 import org.junit.Test;
 
+/**
+ * A class to test the AnimationModel class.
+ */
 public class AnimationModelTests {
 
   @Test

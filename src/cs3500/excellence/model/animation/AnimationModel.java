@@ -1,4 +1,4 @@
-package cs3500.excellence.model.Animation;
+package cs3500.excellence.model.animation;
 
 import java.util.Objects;
 

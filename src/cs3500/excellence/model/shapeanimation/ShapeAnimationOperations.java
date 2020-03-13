@@ -1,9 +1,12 @@
-package cs3500.excellence.model.ShapeAnimation;
+package cs3500.excellence.model.shapeanimation;
 
-import cs3500.excellence.model.Animation.AnimationOperations;
+import cs3500.excellence.model.animation.AnimationOperations;
 import cs3500.excellence.model.AnimationState;
 import java.util.List;
 
+/**
+ * An interface that represents the
+ */
 public interface ShapeAnimationOperations extends AnimationState {
 
   /**

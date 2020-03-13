@@ -2,12 +2,15 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
 
-import cs3500.excellence.model.ExcellenceAnimation.ExcellenceAnimationModel;
-import cs3500.excellence.model.ShapeAnimation.Shape.shapeType;
-import cs3500.excellence.model.ShapeAnimation.ShapeAnimationModel;
-import cs3500.excellence.model.ShapeAnimation.ShapeAnimationOperations;
+import cs3500.excellence.model.excellenceanimation.ExcellenceAnimationModel;
+import cs3500.excellence.model.shapeanimation.Shape.shapeType;
+import cs3500.excellence.model.shapeanimation.ShapeAnimationModel;
+import cs3500.excellence.model.shapeanimation.ShapeAnimationOperations;
 import org.junit.Test;
 
+/**
+ * A class to test the ExcellenceAnimationModel class.
+ */
 public class ExcellenceAnimationModelTests {
 
 

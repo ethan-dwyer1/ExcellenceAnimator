@@ -1,4 +1,4 @@
-package cs3500.excellence.model.ShapeAnimation;
+package cs3500.excellence.model.shapeanimation;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -11,6 +11,9 @@ import java.awt.geom.Point2D;
  */
 public class Shape {
 
+  /**
+   * An enumeration to describe the type of shape to be drawn
+   */
   public enum shapeType {
     RECTANGLE {
       @Override
@@ -50,7 +53,7 @@ public class Shape {
   }
 
   /**
-   * Gets the color of the shape
+   * Returns the color of the shape.
    * @return a color object representing the color of the shape
    */
   public Color getColor() {
@@ -58,7 +61,7 @@ public class Shape {
   }
 
   /**
-   * Returns the overall two dimensional size of the shape
+   * Returns the overall two dimensional size of the shape.
    * @return a Dimension2D object with an x and y component
    */
   public Dimension2D getDimensions() {
@@ -66,7 +69,7 @@ public class Shape {
   }
 
   /**
-   * Returns the position of an object in 2D space
+   * Returns the position of an object in 2D space.
    * @return a Point2D object with an x and y component
    */
   public Point2D getPosition() {
@@ -74,7 +77,7 @@ public class Shape {
   }
 
   /**
-   * Sets the color of the shape
+   * Sets the color of the shape.
    * @param red   the red value of the color
    * @param green the green value of the color
    * @param blue  the blue value of the color
@@ -86,7 +89,7 @@ public class Shape {
   }
 
   /**
-   * Sets the dimensions of the shape
+   * Sets the dimensions of the shape.
    * @param width   the width of the shape
    * @param height  the height of the shape
    */
@@ -96,7 +99,7 @@ public class Shape {
   }
 
   /**
-   * Sets the position of the shape in 2D space
+   * Sets the position of the shape in 2D space.
    * @param x the x-coordinate of the shape
    * @param y the y-coordinate of the shape
    */

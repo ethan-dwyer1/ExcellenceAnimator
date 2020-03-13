@@ -3,10 +3,10 @@ import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
-import cs3500.excellence.model.Animation.AnimationModel;
-import cs3500.excellence.model.Animation.AnimationOperations;
-import cs3500.excellence.model.ShapeAnimation.Shape.shapeType;
-import cs3500.excellence.model.ShapeAnimation.ShapeAnimationModel;
+import cs3500.excellence.model.animation.AnimationModel;
+import cs3500.excellence.model.animation.AnimationOperations;
+import cs3500.excellence.model.shapeanimation.Shape.shapeType;
+import cs3500.excellence.model.shapeanimation.ShapeAnimationModel;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Point;
@@ -14,6 +14,9 @@ import java.util.ArrayList;
 import java.util.List;
 import org.junit.Test;
 
+/**
+ * A class to test the ShapeAnimationModel class.
+ */
 public class ShapeAnimationModelTests {
 
   @Test(expected = IllegalArgumentException.class)
